@@ -59,6 +59,7 @@ cli_command(__name__, 'vm delete', mgmt_path.format(op_var, op_class, 'delete'),
 cli_command(__name__, 'vm deallocate', mgmt_path.format(op_var, op_class, 'deallocate'), cf_vm)
 cli_command(__name__, 'vm generalize', mgmt_path.format(op_var, op_class, 'generalize'), cf_vm)
 cli_command(__name__, 'vm show', custom_path.format('show_vm'), table_transformer=transform_vm)
+cli_command(__name__, 'vm add-secrets', custom_path.format('add_secrets_vm'), table_transformer=transform_vm)
 cli_command(__name__, 'vm list-vm-resize-options', mgmt_path.format(op_var, op_class, 'list_available_sizes'), cf_vm)
 cli_command(__name__, 'vm stop', mgmt_path.format(op_var, op_class, 'power_off'), cf_vm)
 cli_command(__name__, 'vm restart', mgmt_path.format(op_var, op_class, 'restart'), cf_vm)

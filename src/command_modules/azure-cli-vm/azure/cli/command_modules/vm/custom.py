@@ -18,6 +18,9 @@ except ImportError:
 from six.moves.urllib.request import urlopen  # noqa, pylint: disable=import-error,unused-import
 
 from azure.mgmt.compute.models import (DataDisk,
+                                       SubResource,
+                                       VaultCertificate,
+                                       VaultSecretGroup,
                                        VirtualMachineScaleSet,
                                        VirtualMachineCaptureParameters,
                                        VirtualMachineScaleSetExtension,
@@ -154,6 +157,28 @@ def show_vm(resource_group_name, vm_name, show_details=False):
         return _vm_get_details(resource_group_name, vm_name)
     else:
         return _vm_get(resource_group_name, vm_name)
+
+# pylint: disable=line-too-long
+def add_secrets_vm(resource_group_name, vm_name, source_vault_id, certificate_store, certificate_url):
+    vm = _vm_get(resource_group_name, vm_name)
+    source_vault = SubResource(id=source_vault_id)
+    vault_certificate = VaultCertificate(certificate_url=certificate_url, certificate_store=certificate_store)
+    vault_certificates = [vault_certificate]
+    vault_secret_group = VaultSecretGroup(source_vault=source_vault, vault_certificates=vault_certificates)
+    vm.os_profile.secrets.append(vault_secret_group)
+    # if disk_name is None:
+    #     file_name = vhd.uri.split('/')[-1]
+    #     disk_name = os.path.splitext(file_name)[0]
+    # # pylint: disable=no-member
+    # if lun is None:
+    #     lun = _get_disk_lun(vm.storage_profile.data_disks)
+    # disk = DataDisk(lun=lun, vhd=vhd, name=disk_name,
+    #                 create_option=create_option,
+    #                 caching=caching, disk_size_gb=disk_size)
+    # if vm.storage_profile.data_disks is None:
+    #     vm.storage_profile.data_disks = []
+    # vm.storage_profile.data_disks.append(disk)  # pylint: disable=no-member
+    return _vm_set(vm)
 
 
 def _vm_get_details(resource_group_name, vm_name):

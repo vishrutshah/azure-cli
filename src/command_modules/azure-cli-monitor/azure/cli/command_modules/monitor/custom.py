@@ -4,7 +4,9 @@
 # --------------------------------------------------------------------------------------------
 from __future__ import print_function
 import datetime
-from azure.cli.core._util import CLIError
+import json
+import os
+from azure.cli.core._util import get_file_json, CLIError
 
 
 # 1 hour in milliseconds
@@ -13,6 +15,10 @@ DEFAULT_QUERY_TIME_RANGE = 3600000
 # ISO format with explicit indication of timezone
 DATE_TIME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
 
+# Autoscale settings parameter scaffold file path
+CURR_DIR = os.path.dirname(os.path.realpath(__file__))
+AUTOSCALE_SETTINGS_PARAMETER_FILE_PATH = os.path.join(CURR_DIR,
+                                                      'autoscale-parameters-template.json')
 
 def list_metric_definitions(client, resource_id, metric_names=None):
     '''Commands to manage metric definitions.
@@ -34,6 +40,7 @@ def _metric_names_filter_builder(metric_names=None):
     return ' or '.join(filters)
 
 
+# pylint: disable=too-many-arguments
 def list_metrics(client, resource_id, time_grain,
                  start_time=None, end_time=None, metric_names=None):
     '''Lists the metric values for a resource.
@@ -100,6 +107,7 @@ def _validate_start_time(start_time, end_time):
     return result_time
 
 
+# pylint: disable=too-many-arguments
 def list_activity_logs(client, correlation_id=None, resource_group=None, resource_id=None,
                        resource_provider=None, start_time=None, end_time=None,
                        caller=None, status=None, max_events=50, select=None):
@@ -134,6 +142,7 @@ def list_activity_logs(client, correlation_id=None, resource_group=None, resourc
     return _limit_results(activity_logs, max_events)
 
 
+# pylint: disable=too-many-arguments
 def _build_activity_logs_odata_filter(correlation_id=None, resource_group=None, resource_id=None,
                                       resource_provider=None, start_time=None, end_time=None,
                                       caller=None, status=None):
@@ -205,3 +214,16 @@ def _limit_results(paged, limit):
         else:
             break
     return list(results)
+
+
+def scaffold_autoscale_settings_parameters(client):  # pylint: disable=unused-argument
+    '''Scaffold fully formed autoscale-settings' parameters as json template
+    '''
+    return _load_autoscale_settings_prameres(AUTOSCALE_SETTINGS_PARAMETER_FILE_PATH)
+
+
+def _load_autoscale_settings_prameres(file_path):
+    if not os.path.exists(file_path):
+        raise CLIError('File {} not found.'.format(file_path))
+
+    return get_file_json(file_path)

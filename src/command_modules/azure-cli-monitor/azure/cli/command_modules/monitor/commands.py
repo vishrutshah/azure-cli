@@ -82,7 +82,7 @@ autoscale_settings_scaffold = create_service_adapter(
 with ServiceGroup(__name__, get_monitor_autoscale_settings_operation,
                   autoscale_settings_scaffold) as s:
     with s.group('monitor autoscale-settings') as c:
-        c.command('scaffold', 'scaffold_autoscale_settings_parameters')
+        c.command('get-parameters-template', 'scaffold_autoscale_settings_parameters')
 
 
 # DATA COMMANDS

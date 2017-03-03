@@ -44,7 +44,7 @@ with ParametersContext(command='monitor autoscale-settings create') as c:
     c.register('parameters', ('--parameters',),
                type=json.loads,
                help='JSON encoded parameters configuration. Use @{file} to load from a file.'
-                    'Use az autoscale-settings scaffold to export parameters json template.')
+                    'Use az autoscale-settings get-parameters-template to export json template.')
 
 with ParametersContext(command='monitor metric-definitions list') as c:
     c.argument('metric_names', nargs='+')

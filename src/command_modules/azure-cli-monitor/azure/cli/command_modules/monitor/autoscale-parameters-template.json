@@ -1,10 +1,10 @@
 {
-  "autoscale_setting_resource_name": "autoscale setting resource name",
+  "autoscale_setting_resource_name": "{MyAutoscaleSettings}",
   "location": "West US",
   "tags": {},
   "profiles": [
     {
-      "name": "name of the profile",
+      "name": "{AutoscaleProfile}",
       "capacity": {
         "minimum": "1",
         "maximum": "5",
@@ -13,18 +13,18 @@
       "rules": [
         {
           "metric_trigger": {
-            "metric_name": "name of the metric",
-            "metric_resource_uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{providerName}/{resourceName}/{subResourceName}",
+            "metric_name": "{name}",
+            "metric_resource_uri": "{FullyQualifiedAzureResourceID}",
             "time_grain": "(duration in ISO8601 format)PT5M",
-            "statistic": "Average or Min or Max or Sum",
+            "statistic": "{Average|Min|Max|Sum}",
             "time_window": "(duration in ISO8601 format)PT45M",
-            "time_aggregation": "Average or Minimum or Maximum or Total or Count",
-            "operator": "Equals or NotEquals or GreaterThan or GreaterThanOrEqual or LessThan or LessThanOrEquals",
+            "time_aggregation": "{Average|Minimum|Maximum|Total|Count}",
+            "operator": "{Equals|NotEquals|GreaterThan|GreaterThanOrEqual|LessThan|LessThanOrEquals}",
             "threshold": 100
           },
           "scale_action": {
-            "direction": "None or Increase or Decrease",
-            "type": "ChangeCount or PercentChangeCount or ExactCount",
+            "direction": "{None|Increase|Decrease}",
+            "type": "{ChangeCount|PercentChangeCount|ExactCount}",
             "value": "2 (number of instances that are involved in the scaling)",
             "cooldown": "(duration in ISO8601 format)PT20M"
           }
@@ -34,5 +34,5 @@
   ],
   "notifications": [],
   "enabled": false,
-  "target_resource_uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{providerName}/{resourceName}/{subResourceName}"
+  "target_resource_uri": "{FullyQualifiedAzureResourceID}"
 }

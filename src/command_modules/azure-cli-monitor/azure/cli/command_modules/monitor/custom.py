@@ -4,7 +4,6 @@
 # --------------------------------------------------------------------------------------------
 from __future__ import print_function
 import datetime
-import json
 import os
 from azure.cli.core._util import get_file_json, CLIError
 
@@ -15,10 +14,6 @@ DEFAULT_QUERY_TIME_RANGE = 3600000
 # ISO format with explicit indication of timezone
 DATE_TIME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
 
-# Autoscale settings parameter scaffold file path
-CURR_DIR = os.path.dirname(os.path.realpath(__file__))
-AUTOSCALE_SETTINGS_PARAMETER_FILE_PATH = os.path.join(CURR_DIR,
-                                                      'autoscale-parameters-template.json')
 
 def list_metric_definitions(client, resource_id, metric_names=None):
     '''Commands to manage metric definitions.
@@ -219,10 +214,15 @@ def _limit_results(paged, limit):
 def scaffold_autoscale_settings_parameters(client):  # pylint: disable=unused-argument
     '''Scaffold fully formed autoscale-settings' parameters as json template
     '''
-    return _load_autoscale_settings_prameres(AUTOSCALE_SETTINGS_PARAMETER_FILE_PATH)
+    # Autoscale settings parameter scaffold file path
+    curr_dir = os.path.dirname(os.path.realpath(__file__))
+    autoscale_settings_parameter_file_path = os.path.join(
+        curr_dir, 'autoscale-parameters-template.json')
+
+    return _load_autoscale_settings_parameters(autoscale_settings_parameter_file_path)
 
 
-def _load_autoscale_settings_prameres(file_path):
+def _load_autoscale_settings_parameters(file_path):
     if not os.path.exists(file_path):
         raise CLIError('File {} not found.'.format(file_path))
 

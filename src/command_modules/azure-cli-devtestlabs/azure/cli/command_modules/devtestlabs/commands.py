@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-from ._client_factory import (get_devtestlabs_virtual_machine_operation)
+from ._client_factory import get_devtestlabs_virtual_machine_operation
 from ._util import (ServiceGroup, create_service_adapter)
 
 
@@ -14,6 +14,6 @@ virtual_machine_operations = create_service_adapter(
 
 with ServiceGroup(__name__, get_devtestlabs_virtual_machine_operation,
                   virtual_machine_operations) as s:
-    with s.group('devtestlabs virtual-machine') as c:
+    with s.group('devtestlabs vm') as c:
         c.command('show', 'get_resource')
         c.command('list', 'list')

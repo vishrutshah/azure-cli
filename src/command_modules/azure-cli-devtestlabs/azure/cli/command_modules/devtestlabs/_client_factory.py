@@ -8,7 +8,7 @@
 def get_devtestlabs_management_client(_):
     from azure.mgmt.devtestlabs import DevTestLabsClient
     from azure.cli.core.commands.client_factory import get_mgmt_service_client
-    return get_mgmt_service_client(MonitorManagementClient)
+    return get_mgmt_service_client(DevTestLabsClient)
 
 
 def get_devtestlabs_virtual_machine_operation(kwargs):

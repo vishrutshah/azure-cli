@@ -6,10 +6,10 @@
 from codecs import open
 from setuptools import setup
 
-VERSION = '0.0.1b1+dev'
+VERSION = '0.1.1b4+dev'
 
 CLASSIFIERS = [
-    'Development Status :: 1 - Beta',
+    'Development Status :: 4 - Beta',
     'Intended Audience :: Developers',
     'Intended Audience :: System Administrators',
     'Programming Language :: Python',
@@ -33,7 +33,7 @@ with open('HISTORY.rst', 'r', encoding='utf-8') as f:
     HISTORY = f.read()
 
 setup(
-    name='azure-cli-devtetslabs',
+    name='azure-cli-devtestlabs',
     version=VERSION,
     description='Microsoft Azure Command-Line Tools DevTestLabs Command Module',
     long_description=README + '\n\n' + HISTORY,

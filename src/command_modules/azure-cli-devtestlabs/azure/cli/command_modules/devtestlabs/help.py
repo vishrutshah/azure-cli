@@ -12,5 +12,9 @@ helps['devtestlabs'] = """
             """
 helps['devtestlabs vm'] = """
             type: group
-            short-summary: Commands to manage alerts assigned to Azure resources.
+            short-summary: Commands to manage vm of Azure DevTestLab.
+            """
+helps['devtestlabs custom-image'] = """
+            type: group
+            short-summary: Commands to manage custom images of Azure DevTestLab.
             """

@@ -32,22 +32,18 @@ class CustomCommandTest(unittest.TestCase):
     def test_metrics_odata_filter_builder(self):
         filter_output = _metrics_odata_filter_builder('PT1M')
         regex = r'^(timeGrain eq duration).*(startTime eq).*(endTime eq).*$'
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
         filter_output = _metrics_odata_filter_builder('PT1M', '1970-01-01T00:00:00Z')
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
         filter_output = _metrics_odata_filter_builder('PT1M', end_time='1970-01-01T00:00:00Z')
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
         metric_names = ['ActionsCompleted']
         regex = r'^(\(name.value eq).*(timeGrain eq duration).*(startTime eq).*(endTime eq).*$'
         filter_output = _metrics_odata_filter_builder('PT1M', metric_names=metric_names)
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
     def test_build_activity_logs_odata_filter(self):
         correlation_id = '1234-34567-56789-34567'
@@ -60,33 +56,27 @@ class CustomCommandTest(unittest.TestCase):
 
         filter_output = _build_activity_logs_odata_filter(correlation_id)
         regex = r'^(eventTimestamp ge).*(eventTimestamp le).*(correlationId eq).*$'
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
         filter_output = _build_activity_logs_odata_filter(resource_group=resource_group)
         regex = r'^(eventTimestamp ge).*(eventTimestamp le).*(resourceGroupName eq).*$'
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
         filter_output = _build_activity_logs_odata_filter(resource_id=resource_id)
         regex = r'^(eventTimestamp ge).*(eventTimestamp le).*(resourceId eq).*$'
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
         filter_output = _build_activity_logs_odata_filter(resource_provider=resource_provider)
         regex = r'^(eventTimestamp ge).*(eventTimestamp le).*(resourceProvider eq).*$'
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
         filter_output = _build_activity_logs_odata_filter(caller=caller)
         regex = r'^(eventTimestamp ge).*(eventTimestamp le).*(caller eq).*$'
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
         filter_output = _build_activity_logs_odata_filter(status=status)
         regex = r'^(eventTimestamp ge).*(eventTimestamp le).*(status eq).*$'
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
     def test_activity_logs_select_filter_builder(self):
         select_output = _activity_logs_select_filter_builder()
@@ -108,8 +98,7 @@ class CustomCommandTest(unittest.TestCase):
 
         filter_output = _build_odata_filter(default_filter, field_name, field_value, field_label)
         regex = r'^({} and {} eq \'{}\')$'.format(default_filter, field_label, field_value)
-        if not re.search(regex, filter_output):
-            assert False
+        assert bool(re.search(regex, filter_output))
 
         with self.assertRaises(CLIError):
             _build_odata_filter(default_filter, field_name, None, field_label)

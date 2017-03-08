@@ -33,7 +33,7 @@ with open('HISTORY.rst', 'r', encoding='utf-8') as f:
     HISTORY = f.read()
 
 setup(
-    name='azure-cli-devtestlabs',
+    name='azure-cli-lab',
     version=VERSION,
     description='Microsoft Azure Command-Line Tools DevTestLabs Command Module',
     long_description=README + '\n\n' + HISTORY,
@@ -48,7 +48,7 @@ setup(
         'azure.cli.command_modules'
     ],
     packages=[
-        'azure.cli.command_modules.devtestlabs'
+        'azure.cli.command_modules.lab'
     ],
     install_requires=DEPENDENCIES
 )

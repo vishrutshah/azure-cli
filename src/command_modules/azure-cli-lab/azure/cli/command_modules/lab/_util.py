@@ -108,7 +108,7 @@ class ParametersContext(object):
         from azure.cli.core.commands._introspection import \
             (extract_args_from_signature, _option_descriptions)
 
-        from azure.cli.command_modules.monitor.validators import get_complex_argument_processor
+        from azure.cli.command_modules.lab.validators import get_complex_argument_processor
 
         if not patches:
             patches = dict()

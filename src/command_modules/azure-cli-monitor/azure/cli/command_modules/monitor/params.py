@@ -18,9 +18,11 @@ with ParametersContext(command='monitor alert-rules create') as c:
                type=json.loads,
                help='JSON encoded condition configuration. Use @{file} to load from a file.')
 
-for command in ['show', 'delete']:
-    with ParametersContext(command='monitor alert-rules {}'.format(command)) as c:
-        c.argument('rule_name', id_part='name')
+with ParametersContext(command='monitor alert-rules show') as c:
+    c.argument('rule_name', id_part='name')
+
+with ParametersContext(command='monitor alert-rules delete') as c:
+    c.argument('rule_name', id_part='name')
 
 with ParametersContext(command='monitor alert-rule-incidents') as c:
     c.register_alias('incident_name', ('--name', '-n'))
@@ -35,9 +37,11 @@ with ParametersContext(command='monitor autoscale-settings create') as c:
                help='JSON encoded parameters configuration. Use @{file} to load from a file.'
                     'Use az autoscale-settings get-parameters-template to export json template.')
 
-for command in ['show', 'delete']:
-    with ParametersContext(command='monitor autoscale-settings {}'.format(command)) as c:
-        c.argument('autoscale_setting_name', id_part='name')
+with ParametersContext(command='monitor autoscale-settings show') as c:
+    c.argument('autoscale_setting_name', id_part='name')
+
+with ParametersContext(command='monitor autoscale-settings delete') as c:
+    c.argument('autoscale_setting_name', id_part='name')
 
 with ParametersContext(command='monitor service-diagnostic-settings') as c:
     c.register_alias('resource_uri', ('--resource-id',))

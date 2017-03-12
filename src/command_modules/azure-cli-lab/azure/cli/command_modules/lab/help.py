@@ -14,6 +14,10 @@ helps['lab vm'] = """
             type: group
             short-summary: Commands to manage vm of Azure DevTestLab.
             """
+helps['lab vm create'] = """
+            type: command
+            short-summary: Command to create vm of in Azure DevTestLab.
+            """
 helps['lab custom-image'] = """
             type: group
             short-summary: Commands to manage custom images of Azure DevTestLab.

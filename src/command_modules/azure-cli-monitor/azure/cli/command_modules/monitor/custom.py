@@ -104,7 +104,7 @@ def _validate_start_time(start_time, end_time):
     return result_time
 
 
-# pylint: disable=too-many-arguments, line-too-long
+# pylint: disable=too-many-arguments
 def list_activity_logs(client, filters=None, correlation_id=None, resource_group=None,
                        resource_id=None, resource_provider=None, start_time=None, end_time=None,
                        caller=None, status=None, max_events=50, select=None):
@@ -129,7 +129,8 @@ def list_activity_logs(client, filters=None, correlation_id=None, resource_group
     if filters:
         odata_filters = filters
     else:
-        if len([x for x in [correlation_id, resource_group, resource_id, resource_provider] if x]) > 1:
+        collection = [correlation_id, resource_group, resource_id, resource_provider]
+        if not _single(collection):
             raise CLIError("usage error: [--correlation-id ID | --resource-group NAME | "
                            "--resource-id ID | --resource-provider PROVIDER]")
 
@@ -144,6 +145,10 @@ def list_activity_logs(client, filters=None, correlation_id=None, resource_group
     select_filters = _activity_logs_select_filter_builder(select)
     activity_logs = client.list(filter=odata_filters, select=select_filters)
     return _limit_results(activity_logs, max_events)
+
+
+def _single(collection):
+    return len([x for x in collection if x]) == 1
 
 
 # pylint: disable=too-many-arguments

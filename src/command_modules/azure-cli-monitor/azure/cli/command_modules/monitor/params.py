@@ -24,6 +24,10 @@ with ParametersContext(command='monitor alert-rules show') as c:
 with ParametersContext(command='monitor alert-rules delete') as c:
     c.argument('rule_name', id_part='name')
 
+#  https://github.com/Azure/azure-rest-api-specs/issues/1017
+with ParametersContext(command='monitor alert-rules list') as c:
+    c.ignore('filter')
+
 with ParametersContext(command='monitor alert-rule-incidents') as c:
     c.register_alias('incident_name', ('--name', '-n'))
 
@@ -42,6 +46,10 @@ with ParametersContext(command='monitor autoscale-settings show') as c:
 
 with ParametersContext(command='monitor autoscale-settings delete') as c:
     c.argument('autoscale_setting_name', id_part='name')
+
+#  https://github.com/Azure/azure-rest-api-specs/issues/1017
+with ParametersContext(command='monitor autoscale-settings list') as c:
+    c.ignore('filter')
 
 with ParametersContext(command='monitor service-diagnostic-settings') as c:
     c.register_alias('resource_uri', ('--resource-id',))

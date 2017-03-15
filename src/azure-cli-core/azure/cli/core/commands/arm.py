@@ -20,7 +20,7 @@ from azure.cli.core._util import CLIError, todict
 
 logger = azlogging.get_az_logger(__name__)
 
-regex = re.compile('/subscriptions/(?P<subscription>[^/]*)/resourceGroups/(?P<resource_group>[^/]*)'
+regex = re.compile('/subscriptions/(?P<subscription>[^/]*)/resource[gG]roups/(?P<resource_group>[^/]*)'
                    '/providers/(?P<namespace>[^/]*)/(?P<type>[^/]*)/(?P<name>[^/]*)'
                    '(/(?P<child_type>[^/]*)/(?P<child_name>[^/]*))?'
                    '(/(?P<grandchild_type>[^/]*)/(?P<grandchild_name>[^/]*))?')
@@ -76,11 +76,14 @@ def parse_resource_id(rid):
 def is_valid_resource_id(rid, exception_type=None):
     is_valid = False
     try:
-        is_valid = rid and resource_id(**parse_resource_id(rid)) == rid
+        print(resource_id(**parse_resource_id(rid)))
+        print(rid)
+        is_valid = rid and resource_id(**parse_resource_id(rid)).lower() == rid.lower()
     except KeyError:
         pass
     if not is_valid and exception_type:
         raise exception_type()
+    print(is_valid)
     return is_valid
 
 

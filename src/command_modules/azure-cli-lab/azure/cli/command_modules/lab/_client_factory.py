@@ -14,8 +14,10 @@ def get_devtestlabs_management_client(_):
 def get_devtestlabs_virtual_machine_operation(kwargs):
     return get_devtestlabs_management_client(kwargs).virtual_machine
 
+
 def get_devtestlabs_lab_operation(kwargs):
     return get_devtestlabs_management_client(kwargs).lab
+
 
 def get_devtestlabs_custom_image_operation(kwargs):
     return get_devtestlabs_management_client(kwargs).custom_image
@@ -27,3 +29,7 @@ def get_devtestlabs_gallery_image_operation(kwargs):
 
 def get_devtestlabs_artifact_operation(kwargs):
     return get_devtestlabs_management_client(kwargs).artifact
+
+
+def get_devtestlabs_virtual_network_operation(kwargs):
+    return get_devtestlabs_management_client(kwargs).virtual_network

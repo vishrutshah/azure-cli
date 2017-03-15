@@ -12,6 +12,9 @@ from ._client_factory import (get_devtestlabs_virtual_machine_operation,
 from ._util import (ServiceGroup, create_service_adapter)
 
 
+# Custom Command's service adapter
+custom_operations = create_service_adapter('azure.cli.command_modules.lab.custom')
+
 # Virtual Machine Operations Commands
 virtual_machine_operations = create_service_adapter(
     'azure.mgmt.devtestlabs.operations.virtual_machine_operations',
@@ -26,17 +29,22 @@ with ServiceGroup(__name__, get_devtestlabs_virtual_machine_operation,
         c.command('start', 'start')
         c.command('stop', 'stop')
 
-# Lab Operations Commands
-lab_custom_operations = create_service_adapter('azure.cli.command_modules.lab.custom')
+# Virtual Machine Operations Custom Commands
+with ServiceGroup(__name__, get_devtestlabs_virtual_machine_operation,
+                  custom_operations) as s:
+    with s.group('lab vm') as c:
+        c.command('list', 'list_vm')
 
+# Lab Operations Custom Commands
 with ServiceGroup(__name__, get_devtestlabs_lab_operation,
-                  lab_custom_operations) as s:
+                  custom_operations) as s:
     with s.group('lab vm') as c:
         c.command('create', 'create_lab_vm')
 
 lab_operations = create_service_adapter('azure.mgmt.devtestlabs.operations.lab_operations',
                                         'LabOperations')
 
+# Lab Operations Commands
 with ServiceGroup(__name__, get_devtestlabs_lab_operation,
                   lab_operations) as s:
         with s.group('lab') as c:
@@ -76,7 +84,7 @@ with ServiceGroup(__name__, get_devtestlabs_artifact_operation,
 
 # Virtual Network Operations Commands
 virtual_network_operations = create_service_adapter('azure.mgmt.devtestlabs.operations.virtual_network_operations',
-                                        'VirtualNetworkOperations')
+                                                    'VirtualNetworkOperations')
 
 with ServiceGroup(__name__, get_devtestlabs_virtual_network_operation,
                   virtual_network_operations) as s:

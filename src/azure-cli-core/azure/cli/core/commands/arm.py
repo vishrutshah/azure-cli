@@ -83,7 +83,6 @@ def is_valid_resource_id(rid, exception_type=None):
         pass
     if not is_valid and exception_type:
         raise exception_type()
-    print(is_valid)
     return is_valid
 
 

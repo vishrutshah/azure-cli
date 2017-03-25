@@ -81,7 +81,7 @@ def _validate_location(namespace):
     if namespace.location is None:
         lab_operation = _devtestlabs_management_client.lab
         lab = lab_operation.get_resource(namespace.resource_group, namespace.lab_name)
-        namespace.location = lab.location
+        namespace.location = lab.location  # pylint: disable=no-member
 
 
 def _validate_expiration_date(namespace):
@@ -135,11 +135,11 @@ def _validate_network_parameters(namespace, formula=None):
         lab_vnet = vnet_operation.get_resource(namespace.resource_group,
                                                namespace.lab_name,
                                                namespace.vnet_name)
-        namespace.subnet = lab_vnet.subnet_overrides[0].lab_subnet_name
+        namespace.subnet = lab_vnet.subnet_overrides[0].lab_subnet_name  # pylint: disable=no-member
 
         # Determine value for disallow_public_ip_address based on subnet's
         # use_public_ip_address_permission property
-        if lab_vnet.subnet_overrides[0].use_public_ip_address_permission == 'Allow':
+        if lab_vnet.subnet_overrides[0].use_public_ip_address_permission == 'Allow':  # pylint: disable=no-member
             namespace.disallow_public_ip_address = False
         else:
             namespace.disallow_public_ip_address = True

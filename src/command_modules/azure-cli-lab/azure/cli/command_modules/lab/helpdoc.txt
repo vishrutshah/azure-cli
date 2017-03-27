@@ -1,0 +1,630 @@
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az -h
+
+For version info, use 'az --version'
+
+Group
+    az
+
+Subgroups:
+    account   : Manage subscriptions.
+    acr       : Manage Azure container registries.
+    acs       : Manage Azure Container Services.
+    ad        : Synchronize on-premises directories and manage Azure Active Directory resources.
+    appservice: Manage your Azure Web apps and App Service plans.
+    batch     : Manage Azure Batch.
+    cloud     : Manage the registered Azure clouds.
+    component : Manage and update Azure CLI 2.0 (Preview) components.
+    container : Set up automated builds and deployments for multi-container Docker applications.
+    datalake  : Access to Data Lake Analytics and Store management.
+    disk      : Manage Azure Managed Disks.
+    documentdb: Manage your Azure DocumentDB (NoSQL) database accounts.
+    feature   : Manage resource provider features, such as previews.
+    group     : Manage resource groups and template deployments.
+    image     : Manage custom Virtual Machine Images.
+    iot       : Connect, monitor, and control millions of IoT assets.
+    keyvault  : Safeguard and maintain control of keys, secrets, and certificates.
+    lab       : Commands to manage Azure DevTest Lab.
+    lock      : Manage Azure locks.
+    monitor   : Commands to manage Azure Monitor service.
+    network   : Manages Azure Network resources.
+    policy    : Manage resource policies.
+    provider  : Manage resource providers.
+    redis     : Access to a secure, dedicated cache for your Azure applications.
+    resource  : Manage Azure resources.
+    role      : Use role assignments to manage access to your Azure resources.
+    snapshot  : Manage point-in-time copies of managed disks, native blobs, or other snapshots.
+    sql       : Manage Azure SQL Databases and Data Warehouses.
+    storage   : Durable, highly available, and massively scalable cloud storage.
+    tag       : Manage resource tags.
+    taskhelp  : Provides long-form help content by topic.
+    vm        : Provision Linux or Windows virtual machines in seconds.
+    vmss      : Create highly available, auto-scalable Linux or Windows virtual machines.
+
+Commands:
+    configure : Configure Azure CLI 2.0 Preview or view your configuration. The command is
+                interactive, so just type `az configure` and respond to the prompts.
+    feedback  : Loving or hating the CLI?  Let us know!
+    find      : Find Azure CLI commands based on a given query.
+    login     : Log in to access Azure subscriptions.
+    logout    : Log out to remove access to Azure subscriptions.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab -h
+
+Group
+    az lab: Commands to manage Azure DevTest Lab.
+
+Subgroups:
+    artifact       : Commands to manage artifact of Azure DevTest Lab.
+    artifact-source: Commands to manage artifact source of Azure DevTest Lab.
+    custom-image   : Commands to manage custom images of Azure DevTest Lab.
+    formula        : Commands to manage formulas in the Azure DevTest Lab.
+    gallery-image  : Commands to list gallery images of Azure DevTest Lab.
+    vm             : Commands to manage vm of Azure DevTest Lab.
+    vnet           : Commands to manage Azure DevTest Lab's Virtual Network.
+
+Commands:
+    get            : Get lab.
+
+**************************************************************************************************
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab get -h
+
+Command
+    az lab get: Get lab.
+
+Arguments
+    --name              [Required]: The name of the lab.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example:
+                                    'properties($expand=storageDetails)'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+**************************************************************************************************
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab artifact -h
+
+Group
+    az lab artifact: Commands to manage artifact of Azure DevTest Lab.
+
+Commands:
+    list: List artifacts in a given artifact source.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab artifact list -h
+
+Command
+    az lab artifact list: List artifacts in a given artifact source.
+
+Arguments
+    --artifact-source-name [Required]: The name of the artifact source.
+    --lab-name             [Required]: The name of the lab.
+    --resource-group -g    [Required]: Name of resource group. You can configure the default group
+                                       using 'az configure --defaults group=<name>'.
+    --expand                         : Specify the $expand query. Example:
+                                       'properties($select=title)'.
+    --filter                         : The filter to apply to the operation.
+    --order-by                       : The ordering expression for the results, using OData
+                                       notation.
+    --top                            : The maximum number of resources to return from the operation.
+
+Global Arguments
+    --debug                          : Increase logging verbosity to show all debug logs.
+    --help -h                        : Show this help message and exit.
+    --output -o                      : Output format.  Allowed values: json, jsonc, table, tsv.
+                                       Default: json.
+    --query                          : JMESPath query string. See http://jmespath.org/ for more
+                                       information and examples.
+    --verbose                        : Increase logging verbosity. Use --debug for full debug logs.
+
+**************************************************************************************************
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab artifact-source -h
+
+Group
+    az lab artifact-source: Commands to manage artifact source of Azure DevTest Lab.
+
+Commands:
+    get : Get artifact source.
+    list: List artifact sources in a given lab.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab artifact-source get -h
+
+Command
+    az lab artifact-source get: Get artifact source.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name              [Required]: The name of the artifact source.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example:
+                                    'properties($select=displayName)'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab artifact-source list -h
+
+Command
+    az lab artifact-source list: List artifact sources in a given lab.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example:
+                                    'properties($select=displayName)'.
+    --filter                      : The filter to apply to the operation.
+    --order-by                    : The ordering expression for the results, using OData notation.
+    --top                         : The maximum number of resources to return from the operation.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+**************************************************************************************************
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab custom-image -h
+
+Group
+    az lab custom-image: Commands to manage custom images of Azure DevTest Lab.
+
+Commands:
+    delete: Delete custom image.
+    list  : List custom images in a given lab.
+    show  : Get custom image.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab custom-image list -h
+
+Command
+    az lab custom-image list: List custom images in a given lab.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example: 'properties($select=vm)'.
+    --filter                      : The filter to apply to the operation.
+    --order-by                    : The ordering expression for the results, using OData notation.
+    --top                         : The maximum number of resources to return from the operation.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab custom-image show -h
+
+Command
+    az lab custom-image show: Get custom image.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name              [Required]: The name of the custom image.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example: 'properties($select=vm)'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab custom-image delete -h
+
+Command
+    az lab custom-image delete: Delete custom image.
+        This operation can take a while to complete.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name              [Required]: The name of the custom image.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+**************************************************************************************************
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab formula -h
+
+Group
+    az lab formula: Commands to manage formulas in the Azure DevTest Lab.
+
+Commands:
+    delete: Delete formula.
+    get   : Get formula.
+    list  : List formulas in a given lab.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab formula list -h
+
+Command
+    az lab formula list: List formulas in a given lab.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example:
+                                    'properties($select=description)'.
+    --filter                      : The filter to apply to the operation.
+    --order-by                    : The ordering expression for the results, using OData notation.
+    --top                         : The maximum number of resources to return from the operation.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab formula get -h
+
+Command
+    az lab formula get: Get formula.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name -n           [Required]: The name of the formula.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example:
+                                    'properties($select=description)'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab formula delete -h
+
+Command
+    az lab formula delete: Delete formula.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name -n           [Required]: The name of the formula.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+**************************************************************************************************
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab gallery-image -h
+
+Group
+    az lab gallery-image: Commands to list gallery images of Azure DevTest Lab.
+
+Commands:
+    list: List gallery images in a given lab.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab gallery-image list -h
+
+Command
+    az lab gallery-image list: List gallery images in a given lab.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example:
+                                    'properties($select=author)'.
+    --filter                      : The filter to apply to the operation.
+    --order-by                    : The ordering expression for the results, using OData notation.
+    --top                         : The maximum number of resources to return from the operation.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+**************************************************************************************************
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vnet -h
+
+Group
+    az lab vnet: Commands to manage Azure DevTest Lab's Virtual Network.
+
+Commands:
+    get : Get virtual network.
+    list: List virtual networks in a given lab.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vnet get -h
+
+Command
+    az lab vnet get: Get virtual network.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name              [Required]: The name of the virtual network.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example:
+                                    'properties($expand=externalSubnets)'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vnet list -h
+
+Command
+    az lab vnet list: List virtual networks in a given lab.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example:
+                                    'properties($expand=externalSubnets)'.
+    --filter                      : The filter to apply to the operation.
+    --order-by                    : The ordering expression for the results, using OData notation.
+    --top                         : The maximum number of resources to return from the operation.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+**************************************************************************************************
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vm -h
+
+Group
+    az lab vm: Commands to manage vm of Azure DevTest Lab.
+
+Commands:
+    apply-artifacts: Command to apply artifacts to virtual machine in Azure DevTest Lab.
+    create         : Command to create vm of in Azure DevTest Lab.
+    delete         : Delete virtual machine.
+    list           : Command to retrieve my vms from the Azure DevTest Lab.
+    show           : Get virtual machine.
+    start          : Start a virtual machine.
+    stop           : Stop a virtual machine This operation can take a while to complete.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vm apply-artifacts -h
+
+Command
+    az lab vm apply-artifacts: Command to apply artifacts to virtual machine in Azure DevTest Lab.
+
+Arguments
+    --lab-name          [Required]: Name of the Lab.
+    --name -n           [Required]: Name of the virtual machine.
+    --resource-group -g [Required]: Name of the lab resource group.
+    --artifacts                   : JSON encoded array of artifacts to be applied. Use @{file} to
+                                    load from a file.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vm create -h
+
+Command
+    az lab vm create: Command to create vm of in Azure DevTest Lab.
+
+Arguments
+    --lab-name          [Required]: Name of the Lab.
+    --name -n           [Required]: Name of the virtual machine.
+    --resource-group -g [Required]: Name of the lab resource group.
+    --allow-claim                 : Indicates whether another user can take ownership of the virtual
+                                    machine.
+    --artifacts                   : JSON encoded array of artifacts to be applied. Use @{file} to
+                                    load from a file.
+    --disk-type                   : Storage type to use for virtual machine (i.e. Standard,
+                                    Premium).
+    --expiration-date             : The expiration date in UTC(YYYY-mm-dd) for VM. Ex. 2017-03-25.
+    --formula                     : Name of the formula. Use az lab formula list for available
+                                    formulas.
+    --image                       : The name of the operating system image (Gallery Image Name and
+                                    Custom Image Name/ID). Use az lab gallery-image list for
+                                    available Gallery Images or Use az lab custom-image list for
+                                    available Custom Images.
+    --image-type                  : Type of the image. Allowed values are gallery, custom.
+    --location -l                 : Location where to create VM. Defaults to the location of the
+                                    lab.
+    --notes                       : Notes for the virtual machine.
+    --size                        : The VM size to be created. See https://azure.microsoft.com/en-
+                                    us/pricing/details/virtual-machines/ for size info.
+    --tags                        : Space separated tags in 'key[=value]' format. Use "" to clear
+                                    existing tags.
+
+Authentication Arguments
+    --admin-password              : Password for the VM.
+    --admin-username              : Username for the VM.  Default: vishrut.
+    --authentication-type         : Type of authentication to use with the VM. Allowed values are
+                                    password, ssh.  Default: password.
+    --generate-ssh-keys           : Generate SSH public and private key files if missing.
+    --ssh-key                     : The SSH public key or public key file path. Use --generate-ssh-
+                                    keys to regen ssh keys.
+
+Network Arguments
+    --disallow-public-ip-address  : To allow public ip address set to true or false. If omitted,
+                                    based on the defaulted subnet this will be set to true or false.
+    --subnet                      : Name of the subnet to reference an existing one in lab. If
+                                    omitted, lab's existing one subnet will be selected
+                                    automatically.
+    --vnet-name                   : Name of the virtual network to reference an existing one in lab.
+                                    If omitted, lab's existing one VNet and subnet will be selected
+                                    automatically.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vm delete -h
+
+Command
+    az lab vm delete: Delete virtual machine.
+        This operation can take a while to complete.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name              [Required]: The name of the virtual machine.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vm list -h
+
+Command
+    az lab vm list: Command to retrieve my vms from the Azure DevTest Lab.
+
+Arguments
+    --lab-name          [Required]: Name of the Lab.
+    --resource-group -g [Required]: Name of the lab resource group.
+    --expand                      : Specify the expand query.
+    --object-id                   : Owner's object id. If omitted, we'll pick one if available.
+    --order-by                    : The ordering expression for the results using OData notation.
+    --top                         : The maximum number of resources to return from the operation.
+
+Filter Arguments
+    --all                         : List all virtual machines in the lab. Cannot be used with
+                                    --filters.
+    --claimable                   : List of claimable virtual machines in the lab. Cannot be used
+                                    with --filters.
+    --filters                     : The filter to apply on the operation.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vm show -h
+
+Command
+    az lab vm show: Get virtual machine.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name              [Required]: The name of the virtual machine.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+    --expand                      : Specify the $expand query. Example:
+                                    'properties($expand=artifacts,computeVm,networkInterface,applica
+                                    bleSchedule)'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vm start -h
+
+Command
+    az lab vm start: Start a virtual machine.
+        This operation can take a while to complete.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name              [Required]: The name of the virtual machine.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
+(env) vishrut@mac azure-cli (devtestlabs-docs) $ az lab vm stop -h
+
+Command
+    az lab vm stop: Stop a virtual machine This operation can take a while to complete.
+
+Arguments
+    --lab-name          [Required]: The name of the lab.
+    --name              [Required]: The name of the virtual machine.
+    --resource-group -g [Required]: Name of resource group. You can configure the default group
+                                    using 'az configure --defaults group=<name>'.
+
+Global Arguments
+    --debug                       : Increase logging verbosity to show all debug logs.
+    --help -h                     : Show this help message and exit.
+    --output -o                   : Output format.  Allowed values: json, jsonc, table, tsv.
+                                    Default: json.
+    --query                       : JMESPath query string. See http://jmespath.org/ for more
+                                    information and examples.
+    --verbose                     : Increase logging verbosity. Use --debug for full debug logs.
